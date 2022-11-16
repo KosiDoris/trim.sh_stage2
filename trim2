@@ -1,0 +1,18 @@
+#!/bin/bash
+mkdir trimmed
+
+SAMPLES=(
+        "SLGFSK-N"
+        "SLGFSK-T"
+)
+
+for SAMPLE in "${SAMPLES[@]}"; do
+
+        fastp \
+        -i "$PWD/${SAMPLE}_r1_chr5_12_17.fastq.gz" \
+        -I "$PWD/${SAMPLE}_r2_chr5_12_17.fastq.gz" \
+        -o "trimmed/${SAMPLE}_r1_chr5_12_17.fastq.gz" \
+        -O "trimmed/${SAMPLE}_r2_chr5_12_17.fastq.gz" \
+        --html "fastpreports/${SAMPLE}_fastp.html" 
+
+done
